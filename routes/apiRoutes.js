@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+const booksController = require("../controllers/booksController");
 
 router.get("/books/:id", (req,res) => {
   const queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${req.params.id}&key=${process.env.API_KEY}`;
@@ -9,9 +10,8 @@ router.get("/books/:id", (req,res) => {
   .catch(err => res.status(404).send("Something went wrong"));
 });
 
-router.get("/books", (req,res) => {
-  res.send("key: " + process.env.API_KEY);
-});
+router.post("/saved", booksController.create);
+router.get("/saved", booksController.findAll);
 
 
 module.exports = router;

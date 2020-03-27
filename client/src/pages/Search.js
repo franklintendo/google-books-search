@@ -19,7 +19,7 @@ function Search() {
         API.getSearch(BookSearch)
           .then(res => {
               setBooks(res.data.items);
-              console.log(books);
+              console.log(res.data.items);
             })
           .catch(err => console.log(err));
         // console.log(BookSearch)
@@ -32,6 +32,23 @@ function Search() {
         } else if (event.key === "Enter" && BookSearch) {
             handleSearchClick(event);
         }
+    }
+
+    const saveBook = event => {
+        event.preventDefault();
+        // console.log(event.target.dataset.book_id);
+        // console.log(event.target.dataset.book_img);
+        // console.log(event.target.dataset.book_title);
+        // console.log(event.target.dataset.book_authors);
+        // console.log(event.target.dataset.book_link);
+        API.saveBook({
+            title: event.target.dataset.book_title,
+            authors: event.target.dataset.book_authors,
+            description: event.target.dataset.book_description,
+            image: event.target.dataset.book_img,
+            link: event.target.dataset.book_link
+        })
+        .then(res => console.log(res));
     }
 
     return(
@@ -53,12 +70,30 @@ function Search() {
                         books.map(book => {
                             return (
                                 <div key={book.id}>
-                                {!book.volumeInfo.imageLinks.thumbnail ? "No Img" : 
-                                (<img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />)}
-                                <p>id: {book.id}</p>
-                                <p>title: {book.volumeInfo.title}</p>
-                                <p>authors: {book.volumeInfo.authors}</p>
-                                <p>description: {book.volumeInfo.description}</p>
+                                    
+                                    {!book.volumeInfo.imageLinks.thumbnail ? "No Img" : 
+                                    (<img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />)}
+
+
+                                    <p>id: {book.id}</p>
+                                    <p>title: {book.volumeInfo.title}</p>
+                                    <p>authors: {book.volumeInfo.authors}</p>
+                                    <p>description: {book.volumeInfo.description}</p>
+                                    
+
+                                    <button 
+                                        data-book_id={book.id}  
+                                        data-book_img={!book.volumeInfo.imageLinks.thumbnail ? null : book.volumeInfo.imageLinks.thumbnail} 
+                                        data-book_title={book.volumeInfo.title}
+                                        data-book_authors={book.volumeInfo.authors}
+                                        data-book_description={book.volumeInfo.description}
+                                        data-book_link={book.volumeInfo.canonicalVolumeLink}
+                                        onClick={saveBook}
+                                    >
+                                            
+                                            Save
+                                    </button>
+                                    
                                 </div>
                             )
                         })
