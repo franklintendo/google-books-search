@@ -82,7 +82,7 @@ function Search() {
                                         data-book_title={book.volumeInfo.title}
                                         data-book_authors={book.volumeInfo.authors}
                                         data-book_description={book.volumeInfo.description}
-                                        data-book_link={book.volumeInfo.canonicalVolumeLink}
+                                        data-book_link={book.volumeInfo.infoLink}
                                         onClick={saveBook}
                                     >
                                             
