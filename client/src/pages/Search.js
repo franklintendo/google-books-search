@@ -36,11 +36,6 @@ function Search() {
 
     const saveBook = event => {
         event.preventDefault();
-        // console.log(event.target.dataset.book_id);
-        // console.log(event.target.dataset.book_img);
-        // console.log(event.target.dataset.book_title);
-        // console.log(event.target.dataset.book_authors);
-        // console.log(event.target.dataset.book_link);
         API.saveBook({
             title: event.target.dataset.book_title,
             authors: event.target.dataset.book_authors,

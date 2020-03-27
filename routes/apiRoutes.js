@@ -3,7 +3,7 @@ const axios = require("axios");
 const booksController = require("../controllers/booksController");
 
 router.get("/books/:id", (req,res) => {
-  const queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${req.params.id}&key=${process.env.API_KEY}`;
+  const queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${req.params.id}`;
 
   axios.get(queryUrl)
   .then(response => res.send(response.data))

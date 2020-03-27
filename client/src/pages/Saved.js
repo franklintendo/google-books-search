@@ -25,7 +25,7 @@ function Saved() {
                         {!saved.length ? "No books to show" : 
                             saved.map(book => {
                                 return (
-                                    <div className="col">
+                                    <div className="col" key={book._id}>
                                         {!book.image ? "No Img" : 
                                     (<img src={book.image} alt={book.title} />)}
                                         <p>{book.title}</p>
