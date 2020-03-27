@@ -47,53 +47,53 @@ function Search() {
     }
 
     return(
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <h3>Book Search</h3>
+        <div className="container-fluid h-100">
+            <div className="row justify-content-center search-top py-5">
+                <div className="col-md-6 col-lg-4">
+                    <h2>Book Search</h2>
 
-                    <form className="input-group mb-3">
+                    <form className="input-group mb-3 mt-3">
                         <input id="search-input" onChange={handleInputChange} type="text" className="form-control" placeholder="Search" aria-label="Search" onKeyDown={preventReload}  aria-describedby="search-button" />
                         <div className="input-group-append">
-                            <button onClick={handleSearchClick} className="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+                            <button onClick={handleSearchClick} className="btn btn-outline-light" type="button" id="search-button">Search</button>
                         </div>
                     </form>
                 </div>
-                <div className="col-12">
+            </div>
+            <div className="row">
+
                     
                     {!books.length ? (<h1 className="text-center">No Books to Display</h1>) : (
                         books.map(book => {
                             return (
-                                <div key={book.id}>
+                                <div className="col-3" key={book.id}>
                                     
                                     {!book.volumeInfo.imageLinks.thumbnail ? "No Img" : 
-                                    (<img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />)}
+                                    (<img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} className="d-inline-block" />)}
+                                    <div className="d-inline-block">
+                                        <p>title: {book.volumeInfo.title}</p>
+                                        <p>authors: {book.volumeInfo.authors}</p>
+                                        <p>description: {book.volumeInfo.description}</p>
+                                        
 
-
-                                    <p>id: {book.id}</p>
-                                    <p>title: {book.volumeInfo.title}</p>
-                                    <p>authors: {book.volumeInfo.authors}</p>
-                                    <p>description: {book.volumeInfo.description}</p>
-                                    
-
-                                    <button 
-                                        data-book_id={book.id}  
-                                        data-book_img={!book.volumeInfo.imageLinks.thumbnail ? null : book.volumeInfo.imageLinks.thumbnail} 
-                                        data-book_title={book.volumeInfo.title}
-                                        data-book_authors={book.volumeInfo.authors}
-                                        data-book_description={book.volumeInfo.description}
-                                        data-book_link={book.volumeInfo.infoLink}
-                                        onClick={saveBook}
-                                    >
-                                            
-                                            Save
-                                    </button>
-                                    
+                                        <button 
+                                            data-book_id={book.id}  
+                                            data-book_img={!book.volumeInfo.imageLinks.thumbnail ? null : book.volumeInfo.imageLinks.thumbnail} 
+                                            data-book_title={book.volumeInfo.title}
+                                            data-book_authors={book.volumeInfo.authors}
+                                            data-book_description={book.volumeInfo.description}
+                                            data-book_link={book.volumeInfo.infoLink}
+                                            onClick={saveBook}
+                                        >
+                                                
+                                                Save
+                                        </button>
+                                    </div>
                                 </div>
                             )
                         })
                     )}
-                </div>
+
             </div>
         </div>
     )

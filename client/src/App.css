@@ -1,24 +1,35 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: #F7FCF9;
+  color: #01110A;
+} 
+
+.search-top {
+  background: rgba(47, 10, 40, 0.7);
+  background-image: url('./img/books_background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+}
+
+.search-top h2 {
+  text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3em;
+}
+
+.search-top form.input-group {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
 }
