@@ -27,6 +27,8 @@ function Search() {
           .then(res => {
               const search = res.data.items.map(book => {
                   let bookObject = book.volumeInfo;
+                  console.log(bookObject.authors);
+
                   if (!bookObject.imageLinks) {
                     bookObject.imageLinks = { thumbnail: "https://via.placeholder.com/128x208?text=No+Image"}
                   }
@@ -35,7 +37,11 @@ function Search() {
                     bookObject["description"] = "There is no description available for this book."
                   }
 
-                console.log(bookObject.description);
+                  if (!bookObject.authors) {
+                    bookObject["authors"] = ["Unknown"]
+                  }
+
+                console.log(bookObject.authors);
                 return book;
               });
               setBooks(search);
@@ -62,7 +68,12 @@ function Search() {
             image: event.target.dataset.book_img,
             link: event.target.dataset.book_link
         })
-        .then(res => console.log(res));
+        .then(res => {
+
+
+
+            }
+        );
     }
 
     return(
@@ -78,7 +89,7 @@ function Search() {
                         </div>
                     </form>
 
-                    <p className="text-center mb-0"><Link className="link-page" to="/saved"><i class="fas fa-book"></i>&nbsp; View Your Saved Books </Link></p>
+                    <p className="text-center mb-0"><Link className="link-page" to="/saved"><i className="fas fa-book"></i>&nbsp; View Your Saved Books </Link></p>
                 </div>
             </div>
             <div className="row">
@@ -107,8 +118,8 @@ function Search() {
                                             <p className="book-title my-1 text-left">{book.volumeInfo.title}</p>
                                             <p className="book-authors text-left mb-0">
                                                 By&nbsp; 
-                                            {book.volumeInfo.authors.map(author => {
-                                                return (<span><span>,&nbsp;</span>{author}</span>)
+                                            {book.volumeInfo.authors.map((author, index) => {
+                                                return (<span key={index}><span>,&nbsp;</span>{author}</span>)
                                             })}</p>
                                         </div>
                                         <p className="my-3">
@@ -129,6 +140,7 @@ function Search() {
                                             Read More...
                                         </a>
                                         <button 
+                                                id={book.id + "-book"}
                                                 data-book_id={book.id}  
                                                 data-book_img={book.volumeInfo.imageLinks.thumbnail} 
                                                 data-book_title={book.volumeInfo.title}
