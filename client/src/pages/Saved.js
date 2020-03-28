@@ -30,8 +30,8 @@ function Saved() {
                 
 
                         {!saved.length ? (
-                            <div className="row justify-content-center">
-                                <img src={require("../img/nothing.png")} style={{height: "250px"}} alt="No saved" />
+                            <div className="text-center">
+                                <img src={require("../img/nothing.png")} style={{height: "250px"}} alt="No saved" /><br/>
                                 <h1 className="text-center mt-3 headline" style={{color: "#3771c8"}}>You have no saved books</h1>
                             </div>
                         ) : 
