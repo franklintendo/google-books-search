@@ -92,6 +92,12 @@ img.book-image {
   color: #FFFFFF;
 }
 
+.btn-primary.disabled {
+  background-color: #300D04!important;
+  border: none;
+  color: #FFFFFF;
+}
+
 .btn-secondary {
   background-color: #73BA9B;
   border: none;

@@ -27,7 +27,6 @@ function Search() {
           .then(res => {
               const search = res.data.items.map(book => {
                   let bookObject = book.volumeInfo;
-                  console.log(bookObject.authors);
 
                   if (!bookObject.imageLinks) {
                     bookObject.imageLinks = { thumbnail: "https://via.placeholder.com/128x208?text=No+Image"}
@@ -41,7 +40,6 @@ function Search() {
                     bookObject["authors"] = ["Unknown"]
                   }
 
-                console.log(bookObject.authors);
                 return book;
               });
               setBooks(search);
@@ -59,19 +57,25 @@ function Search() {
         }
     }
 
+    let savedBtnID = "";
+
     const saveBook = event => {
         event.preventDefault();
+        savedBtnID = event.target.id;
+        document.getElementById(`${savedBtnID}`).innerHTML = "Saving";
         API.saveBook({
             title: event.target.dataset.book_title,
             authors: event.target.dataset.book_authors,
             description: event.target.dataset.book_description,
             image: event.target.dataset.book_img,
             link: event.target.dataset.book_link
-        })
+        }
+        )
         .then(res => {
-
-
-
+            let savedBTN = document.getElementById(`${savedBtnID}`)
+            savedBTN.innerHTML = "Saved";
+            savedBTN.disabled = true;
+            savedBTN.classList.add("disabled");
             }
         );
     }
