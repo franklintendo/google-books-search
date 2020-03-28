@@ -17,7 +17,7 @@ function Saved() {
     }
 
     const deleteBook = (event) => {
-        let id = event.target.dataset.book_link;
+        let id = event.target.dataset.book_id;
         API.deleteSaved(id)
         .then(res => {
             loadBooks();
@@ -38,7 +38,7 @@ function Saved() {
                 
 
                         {!saved.length ? (
-                            <div className="text-center">
+                            <div className="text-center py-5">
                                 <img src={require("../img/nothing.png")} style={{height: "250px"}} alt="No saved" /><br/>
                                 <h1 className="text-center mt-3 headline" style={{color: "#3771c8"}}>You have no saved books</h1>
                             </div>
@@ -56,12 +56,14 @@ function Saved() {
                                                 <p className="mt-3">
                                                     {book.description}
                                                 </p>
-                                                <a href={book.link} onClick={deleteBook} data-book_link={book._id} className="btn btn-outline-danger mr-3">
-                                                <i class="far fa-trash-alt"></i>&nbsp;Delete
-                                                </a>
-                                                <a href={book.link} target="_blank" className="btn btn-secondary" rel="noopener noreferrer">
-                                                Read More...
-                                                </a>
+                                                <div className="text-center">
+                                                    <button onClick={deleteBook} data-book_id={book._id} className="btn btn-outline-danger mr-3">
+                                                    <i className="far fa-trash-alt"></i>&nbsp;Delete
+                                                    </button>
+                                                    <a href={book.link} target="_blank" className="btn btn-secondary" rel="noopener noreferrer">
+                                                    Read More...
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
