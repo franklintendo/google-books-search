@@ -18,11 +18,20 @@ function Search() {
         // make API call for the search term
         API.getSearch(BookSearch)
           .then(res => {
-              setBooks(res.data.items);
-              console.log(res.data.items);
+              const search = res.data.items.map(book => {
+                  let bookObject = book.volumeInfo;
+                  if (!bookObject.imageLinks) {
+                    bookObject.imageLinks = { thumbnail: "https://via.placeholder.com/128x208?text=No+Image+Available"}
+                  }
+                console.log(bookObject.imageLinks.thumbnail);
+                return book;
+              });
+            //   console.log(search);
+              setBooks(search);
+            //   console.log(search);
             })
           .catch(err => console.log(err));
-        // console.log(BookSearch)
+
         document.getElementById("search-input").value = "";
       };
 
@@ -65,6 +74,7 @@ function Search() {
                     
                     {!books.length ? (<h1 className="text-center">No Books to Display</h1>) : (
                         books.map(book => {
+
                             return (
                                 <div className="col-3" key={book.id}>
                                     
@@ -78,7 +88,7 @@ function Search() {
 
                                         <button 
                                             data-book_id={book.id}  
-                                            data-book_img={!book.volumeInfo.imageLinks.thumbnail ? null : book.volumeInfo.imageLinks.thumbnail} 
+                                            data-book_img={book.volumeInfo.imageLinks.thumbnail} 
                                             data-book_title={book.volumeInfo.title}
                                             data-book_authors={book.volumeInfo.authors}
                                             data-book_description={book.volumeInfo.description}
