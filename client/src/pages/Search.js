@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
 
 function Search() {
 
@@ -76,6 +77,8 @@ function Search() {
                             <button onClick={handleSearchClick} className="btn btn-outline-light" type="button" id="search-button">Search</button>
                         </div>
                     </form>
+
+                    <p className="text-center mb-0"><Link className="link-page" to="/saved"><i class="fas fa-book"></i>&nbsp; View Your Saved Books </Link></p>
                 </div>
             </div>
             <div className="row">

@@ -44,6 +44,21 @@ h1.headline {
   line-height: 2rem;
 }
 
+.link-page {
+  font-family: 'Gochi Hand', cursive;
+  color: #D5F2E3;
+  font-size: 32px;
+  text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+}
+
+.link-page:hover {
+  color: #9BB1A6;
+}
+
+.link-page:active {
+  color: #9BB1A6;
+}
+
 .book-authors span:first-child span {
   display: none;
 }
@@ -94,3 +109,5 @@ img.book-image {
   border: none;
   color: #FFFFFF;
 }
+
+
