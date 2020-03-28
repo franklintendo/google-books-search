@@ -9,5 +9,8 @@ export default {
     },
     getSaved: function() {
         return axios.get('/api/saved');
+    },
+    deleteSaved: function(id) {
+        return axios.delete(`/api/saved/${id}`);
     }
 }

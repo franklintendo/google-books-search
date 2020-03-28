@@ -12,6 +12,7 @@ router.get("/books/:id", (req,res) => {
 
 router.post("/saved", booksController.create);
 router.get("/saved", booksController.findAll);
+router.delete("/saved/:id", booksController.remove);
 
 
 module.exports = router;

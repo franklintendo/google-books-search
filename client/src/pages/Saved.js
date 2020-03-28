@@ -16,7 +16,15 @@ function Saved() {
         .catch(err => console.log(err));
     }
 
-    console.log(saved);
+    const deleteBook = (event) => {
+        let id = event.target.dataset.book_link;
+        API.deleteSaved(id)
+        .then(res => {
+            loadBooks();
+
+        })
+        .catch(err => console.log(err));
+    }
 
     return(
         <div>
@@ -48,6 +56,9 @@ function Saved() {
                                                 <p className="mt-3">
                                                     {book.description}
                                                 </p>
+                                                <a href={book.link} onClick={deleteBook} data-book_link={book._id} className="btn btn-outline-danger mr-3">
+                                                <i class="far fa-trash-alt"></i>&nbsp;Delete
+                                                </a>
                                                 <a href={book.link} target="_blank" className="btn btn-secondary" rel="noopener noreferrer">
                                                 Read More...
                                                 </a>
