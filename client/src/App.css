@@ -33,3 +33,64 @@ html, body, #root {
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
 }
+
+h1.headline {
+  font-family: 'Gochi Hand', cursive;
+}
+
+.book-title {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 32px;
+  line-height: 2rem;
+}
+
+.book-authors span:first-child span {
+  display: none;
+}
+
+
+img.book-image {
+  max-height: 187px;
+  float: left;
+}
+
+.book-deets {
+  background-color: #2E6147;
+  color: #FFFFFF;
+}
+
+.btn-primary {
+  background-color: #BA2D0B;
+  border: none;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #771D08!important;
+  border: none;
+  color: #FFFFFF;
+}
+
+.btn-primary:active {
+  background-color: #DF9F90!important;
+  border: none;
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: #73BA9B;
+  border: none;
+  color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+  background-color: #548871!important;
+  border: none;
+  color: #FFFFFF;
+}
+
+.btn-secondary:active {
+  background-color: #D8ECE3!important;
+  border: none;
+  color: #FFFFFF;
+}
