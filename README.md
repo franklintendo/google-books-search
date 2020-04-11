@@ -2,7 +2,7 @@
 
 ### Overview
 
-This project is a React-based Google Books Search app. It utilizes React components, helper/util functions, and React lifecycle methods to query and display books based on user searches. It also uses Node, Express and MongoDB so that users can save books to review or purchase later.
+This project is a React-based Google Books Search app. It utilizes React components, helper/util functions, and React Hooks to query and display books based on user searches. It also uses Node, Express and MongoDB so that users can save books to review or purchase later.
 
 Link to project: <a href="https://stark-falls-12658.herokuapp.com/" target="_blank">Click here</a>
 
